@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import argparse
 import os
 
@@ -14,13 +16,26 @@ def main():
         print ("dotman v" + __version__)
         exit(0)
 
-    wd = os.getcwd()
+    wd = os.path.abspath(os.getcwd())
 
-    if (args.switch == "") and (args.backup == ""):
-        backupthencopy(args.switch, args.backup, args.name)
+    #switchfile is fucked, fix it 
+    switchfile = os.path.abspath(str(wd) + "/" + args.switch)
+    backupdir = os.path.abspath(os.environ['HOME'] + "/.dotman/" + args.backup)
 
-def backupthencopy(filetoswitch, filetobackup, nameforbackup):
-    pass
+    if os.path.isfile(backupdir):
+        print ("ERROR: Backup directory is file")
+        exit(1)
+
+    copyobj = copy.Copy()
+
+    #fix this stuff too
+    if not ((args.switch == "") and (args.backup == "")):
+        copyobj.copy_from_config(backupdir, args.name)
+        copyobj.copy_to_config(switchfile)
+    elif not args.switch == "":
+        copyobj.copy_to_config(switchfile)
+    elif not args.backup == "":
+        copyobj.copy_from_config(backupdir, args.name)
 
 
 def define_args():
