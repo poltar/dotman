@@ -34,5 +34,5 @@ class Copy:
             os.remove(dirpath)
             os.mkdir(dirpath)
 
-        if not os.path.exists(os.path.join(prog_dir)):
+        if not os.path.exists(prog_dir):
             os.mkdir(prog_dir)

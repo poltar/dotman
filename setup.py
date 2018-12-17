@@ -16,8 +16,8 @@ setuptools.setup() (
     url = "https://github.com/poltar/dotman",
     packages = setuptools.find_packages(),
     classifiers = [
-        "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: GNU GPLv3 License",
-        "Operating System :: Linux",
+        "Programming Language :: Python :: 3 :: Only",
+        "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+        "Operating System :: POSIX :: Linux",
     ],
 )
